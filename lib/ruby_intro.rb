@@ -4,14 +4,49 @@
 
 def sum arr
   # YOUR CODE HERE
+  result = 0
+  arr.each { |x|
+    result = result + x
+  } 
+  result
 end
 
 def max_2_sum arr
   # YOUR CODE HERE
+  if arr.length == 0 then
+    return 0
+  elsif arr.length == 1 then
+    return arr[0]
+  elsif arr.length == 2 then
+    return arr[0] + arr[1]
+  end
+  largest1 = arr[0] > arr[1] ? arr[0] : arr[1]
+  largest2 = arr[0] > arr[1] ? arr[1] : arr[0]
+  arr.slice(2, arr.length - 1).each do |x|
+    if x > largest2
+      largest2 = x
+    end
+    if x > largest1
+      largest1, largest2 = x, largest1
+    end
+  end
+  return largest1 + largest2
 end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
+  hash = Hash.new()
+  result = false
+  arr.each do |x|
+    pair = n - x
+    if hash.has_key?(pair)
+      result = true
+      break
+    else
+      hash[x] = x
+    end
+  end
+  result
 end
 
 # Part 2
