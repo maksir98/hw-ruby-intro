@@ -53,14 +53,27 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  "Hello, " << name
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  if s.empty? then return false end
+  if !(/^[a-zA-Z]/ =~ s) then return false end
+  consonant = /^[aeiou]\w*/
+  !(consonant =~ s.downcase)
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  if !(/^\d/ =~ s) then return false end
+  num = s.to_i
+  remainder = num.remainder(4)
+  if remainder == 0 then
+    return true 
+  else
+    return false
+  end
 end
 
 # Part 3
